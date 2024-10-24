@@ -17,7 +17,14 @@ endif()
 find_package(OpenFHE 1.2.1 REQUIRED)
 find_package(pybind11 REQUIRED)
 
-set( CMAKE_CXX_FLAGS ${OpenFHE_CXX_FLAGS} )
+# set( CMAKE_CXX_FLAGS "${OpenFHE_CXX_FLAGS} -Wno-error=stringop-overread")
+# set( CMAKE_CXX_FLAGS "${OpenFHE_CXX_FLAGS} -fno-lto")
+# message(STATUS "================ CMAKE_CXX_FLAGS       : ${CMAKE_CXX_FLAGS}")
+# message(STATUS "================ CMAKE_EXE_LINKER_FLAGS: ${CMAKE_EXE_LINKER_FLAGS}")
+set(CMAKE_INTERPROCEDURAL_OPTIMIZATION OFF)
+# string(REPLACE "-flto" "" CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS}")
+# string(REPLACE "-flto" "" CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS}")
+
 set( OpenFHE_Py_SOURCES src/lib)
 set( OpenFHE_Py_INCLUDES src/include)
 
